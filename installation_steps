@@ -1,8 +1,10 @@
-1. Create a directory "roles" in main directory where ansible.cfg file is located.
+#Steps to Install & Configure Tomcat with roles using ansible
+
+Step 1. Create a directory "roles" in main directory where ansible.cfg file is located.
    mkdir roles
-2. Create first role as update_repos
+Step 2. Create first role as update_repos
    ansible-galaxy init update_repos --offline
-3. Copy & paste the following task in tasks/main.yml
+Step 3. Copy & paste the following task in tasks/main.yml
 ---
 # tasks file for update_repos
 
@@ -11,10 +13,10 @@
     name: "*"
     state: latest
 
-4. Create first role as tom_java
+Step 4. Create first role as tom_java
    ansible-galaxy init tom_java --offline
 
-5. Copy & paste the following tasks in tasks/main.yml
+Step 5. Copy & paste the following tasks in tasks/main.yml
 ---
 # tasks file for tom_java
  - name: Installing required java
@@ -28,16 +30,16 @@
      link: /usr/bin/java
      path: /usr/lib/jvm/{{set_java}}/bin/java
 
-6. Copy & paste req_java & set_java in vars/main.yml
+Step 6. Copy & paste req_java & set_java in vars/main.yml
 ---
 # vars file for tom_java
 req_java: java-1.8.0-openjdk
 set_java: jre-1.8.0-openjdk
 
-7. Create first role as tom_install 
+Step 7. Create first role as tom_install 
    ansible-galaxy init tom_install --offline
 
-8. Copy & paste the following tasks in task/main.yml
+Step 8. Copy & paste the following tasks in task/main.yml
 
 - name: Downloading required tomcat
   get_url:
@@ -61,12 +63,12 @@ set_java: jre-1.8.0-openjdk
 - name: Starting tomcat
   shell:  nohup /usr/local/latest/bin/startup.sh &
 
-9. Copy & paste the following tasks in vars/main.yml
+Step 9. Copy & paste the following tasks in vars/main.yml
 req_tomcat_ver: 9.0.50
 tomcat_url: http://mirrors.estointernet.in/apache/tomcat/tomcat-{{req_tomcat_ver.split('.')[0]}}/v{{req_tomcat_ver}}/bin/apache-tomcat-{{req_tomcat_ver}}.tar.gz
 tomcat_port: 8082
 
-10 Copy & paste the following server.xml.j2 in template
+Step 10. Copy & paste the following server.xml.j2 in template
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Licensed to the Apache Software Foundation (ASF) under one or more
@@ -239,7 +241,7 @@ tomcat_port: 8082
   </Service>
 </Server>
  
- 11. In main directory Create tom-role-ansible.yml insert the following
+ Step 11. In main directory Create tom-role-ansible.yml insert the following
 
 ---
 - name: Installing Tomcat server with roles
