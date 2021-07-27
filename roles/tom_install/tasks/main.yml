@@ -19,5 +19,10 @@
     src: server.xml.j2
     dest: /usr/local/latest/conf/server.xml
 
+- name: Configure Tomcat Web Management Interface
+  template:
+    src: tomcat-users.j2
+    dest: /usr/local/latest/conf/tomcat-users.xml
+
 - name: Starting tomcat
   shell:  nohup /usr/local/latest/bin/startup.sh &
