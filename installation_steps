@@ -4,7 +4,7 @@ Step 1. Create a directory "roles" in main directory where ansible.cfg file is l
    mkdir roles
 Step 2. Create first role as update_repos
    ansible-galaxy init update_repos --offline
-Step 3. Copy & paste the following task in tasks/main.yml
+Step 3. Go inside the directory update_repos,copy & paste the following task in tasks/main.yml
 ---
 # tasks file for update_repos
 
@@ -16,7 +16,7 @@ Step 3. Copy & paste the following task in tasks/main.yml
 Step 4. Create first role as tom_java
    ansible-galaxy init tom_java --offline
 
-Step 5. Copy & paste the following tasks in tasks/main.yml
+Step 5. Go inside the directory tom_java,copy & paste the following tasks in tasks/main.yml
 ---
 # tasks file for tom_java
  - name: Installing required java
@@ -39,7 +39,7 @@ set_java: jre-1.8.0-openjdk
 Step 7. Create first role as tom_install 
    ansible-galaxy init tom_install --offline
 
-Step 8. Copy & paste the following tasks in task/main.yml
+Step 8. Go inside the directory tom_install,copy & paste the following tasks in task/main.yml
 
 - name: Downloading required tomcat
   get_url:
